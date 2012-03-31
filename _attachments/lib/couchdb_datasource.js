@@ -11,7 +11,7 @@ IRC.CouchDBDataSource = Ember.Object.extend({
             day: 1
         });
         messagesController.set('date', from);
-        $.couch.db('irc').view('viewer/messages', {
+        $.couch.db('hubot-storage').view('viewer/messages', {
             success: function(data) {
                 if (data && data.rows && data.rows.length > 0) {
                     data.rows.forEach(function(row) {
@@ -29,7 +29,7 @@ IRC.CouchDBDataSource = Ember.Object.extend({
 
     loadDays: function() {
         var daysController = this.get('daysController');
-        $.couch.db('irc').view('viewer/messages', {
+        $.couch.db('hubot-storage').view('viewer/messages', {
             success: function(data) {
                 if (data && data.rows && data.rows.length > 0) {
                     data.rows.forEach(function(doc) {
